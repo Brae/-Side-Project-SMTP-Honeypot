@@ -1,0 +1,68 @@
+S: 220 SMTP.BRAE.IO Simple Mail Transfer Service Ready
+C: HELO SMTP.BRAE.IO
+
+S: 250 SMTP.BRAE.IO
+
+C: MAIL FROM:<BRAE@BRAE.IO>
+
+S: 250 OK
+
+C: RCPT TO:<test@hola.com>
+
+S: 250 OK
+
+C: DATA
+S: 354 Start mail input; end with <CRLF>.<CRLF>
+C: Test message
+
+
+C: QUIT
+S: 221 SMTP.BRAE.IO Service closing transmission channel
+
+
+---------------------------------------------------------------------
+
+S: 220 SMTP.BRAE.IO Simple Mail Transfer Service Ready
+C: HELO SMTP.BRAE
+
+S: 501 HELO Invalid domain address
+C: HELO SMTP.BRAE.IO
+
+S: 250 SMTP.BRAE.IO
+
+C: MAIL FROM:<brae@test.com>
+
+S: 550 The address is not valid
+C: MAIL FROM:<brae@BRAE.IO>
+
+S: 250 OK
+
+C: RCPT to:<test@test.com>
+
+S: 550 Invalid syntax. Syntax should be RCPT TO:<recipientaddress>
+C: RCPT TO:<test@test.com>
+
+S: 250 OK
+
+C: RCPT to:<test2:test.com>
+
+S: 550 Invalid syntax. Syntax should be RCPT TO:<recipientaddress>
+C: [A[BRCPT TO:<test2@test.com>
+
+S: 550 Invalid syntax. Syntax should be RCPT TO:<recipientaddress>
+C: RCPT TO:<test2@test.com>
+
+S: 250 OK
+
+C: DATA
+S: 354 Start mail input; end with <CRLF>.<CRLF>
+C: Herp derp
+The cat's on fire
+
+
+C: QUIT
+S: 221 SMTP.BRAE.IO Service closing transmission channel
+
+
+---------------------------------------------------------------------
+
